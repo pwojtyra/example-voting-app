@@ -1,0 +1,34 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: worker
+  name: worker
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'worker:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: /worker
+    git:
+      ref: master
+      uri: 'https://github.com/pwojtyra/example-voting-app.git'
+    type: Git
+  strategy:
+    dockerStrategy: {}
+    type: Docker
+  triggers:
+    - generic:
+        secret: 4c3f9855c55f8f07
+      type: Generic
+    - github:
+        secret: c9f12fb521a44b9d
+      type: GitHub
+    - type: ConfigChange
+status:
+  lastVersion: 4
