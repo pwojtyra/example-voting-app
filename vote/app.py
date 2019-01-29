@@ -5,8 +5,8 @@ import socket
 import random
 import json
 
-option_a = os.getenv('OPTION_A', "Red")
-option_b = os.getenv('OPTION_B', "Blue")
+option_a = os.getenv('OPTION_A', "Porsche")
+option_b = os.getenv('OPTION_B', "Ferrari")
 redis_password = os.getenv('REDIS_PASSWORD', "Dogs")
 hostname = socket.gethostname()
 
